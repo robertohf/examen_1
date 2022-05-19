@@ -1,0 +1,37 @@
+a = 5.6;
+b = 6.7;
+print(a-b);
+print(a/b);
+print(a>b);
+print(a<b);
+print(a==b);
+
+int suma(c,e) begin return c + e; end
+int resta(c,e) begin return c - e; end
+print(suma(1,3));
+print(resta(3,4));
+
+let gcd(a, b) begin
+    if (a == 0)
+    begin
+       return b;
+    end
+    if (b == 0)
+    begin
+       return a;
+    end
+    if (a == b)
+    begin
+        return a;
+    end
+    if (a > b)
+    begin
+        return gcd(a-b, b);
+    end
+    return gcd(a, b-a);
+end
+  
+
+int a = 98;
+int b = 56;
+print(gcd(a,b));
