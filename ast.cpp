@@ -29,9 +29,19 @@ float FloatExpr::eval(Context &ctx) {
 
 float MethodInvoc::eval(Context &ctx) {
     StmtList stmt = ctx.method[id];
+    std::vector<std::string> variables;
 
-    for(auto &it: *vars) {
-        it->eval(ctx);
+    std::string var;
+    for(auto &paramTable: *vars) {
+        for (auto &varTable : ctx.vars) {
+                var = varTable.first;
+                ctx.vars[var] = paramTable->eval(ctx);
+        }
+    }
+
+    std::cout << "Keys keep reassigning its value upon passing through parameter, atleast ir works." << std::endl;
+    for (auto &it : ctx.vars) {
+        std::cout << "Variable: " << it.first << ", Value: " << it.second << std::endl;
     }
 
     for(auto &it : stmt) {
@@ -57,7 +67,7 @@ float ReturnStmt::exec(Context &ctx) {
 
 float WriteStmt::exec(Context &ctx) {
     auto printExpr = expr->eval(ctx);
-    std::cout << "Result: " << printExpr << std::endl;
+    std::cout << "Print Result: " << printExpr << std::endl;
     return 1;
 }
 
@@ -67,7 +77,7 @@ float MethodDecl::exec(Context &ctx) {
     for (auto &it : *param) {
         it->eval(ctx);
     }
-    
+
     return 1;
 }
 

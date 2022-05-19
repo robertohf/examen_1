@@ -1,0 +1,4 @@
+int suma(a,b) begin return a + b; end
+int resta(a,b) begin return a - b; end
+print(suma(1,3));
+print(resta(3,4));

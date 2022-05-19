@@ -85,7 +85,7 @@ Print: KW_PRINT EqualityExpr { $$ = new WriteStmt($2); }
 AssignDecl: KW_LET TK_IDENT '=' EqualityExpr { $$ = new AssignStmt($2, $4); }
       | TK_IDENT '=' EqualityExpr { $$ = new AssignStmt($1, $3); }
       | KW_INT TK_IDENT '='  EqualityExpr { $$ = new AssignStmt($2, $4); }
-      | AssignDecl ';'
+      | KW_INT TK_IDENT '='  EqualityExpr ',' AssignDecl { $$ = new AssignStmt($2, $4); }
 ;
 
 MethodDecl: KW_LET TK_IDENT '(' Params ')' KW_BEGIN Block KW_END { $$ = new MethodDecl($2, $4, $7); }

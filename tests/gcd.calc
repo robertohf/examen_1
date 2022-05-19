@@ -1,16 +1,3 @@
-a = 5.6;
-b = 6.7;
-print(a-b);
-print(a/b);
-print(a>b);
-print(a<b);
-print(a==b);
-
-int suma(c,e) begin return c + e; end
-int resta(c,e) begin return c - e; end
-print(suma(1,3));
-print(resta(3,4));
-
 let gcd(a, b) begin
     if (a == 0)
     begin
@@ -32,6 +19,5 @@ let gcd(a, b) begin
 end
   
 
-int a = 98;
-int b = 56;
+int a = 98, b = 56;
 print(gcd(a,b));

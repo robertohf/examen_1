@@ -5,6 +5,7 @@
 #include <memory>
 #include <list>
 #include <unordered_map>
+#include <vector>
 
 class Expr;
 class Stmt;
